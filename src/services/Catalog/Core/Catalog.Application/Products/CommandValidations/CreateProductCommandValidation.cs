@@ -16,7 +16,7 @@ namespace Catalog.Application.Products.CommandValidations
             RuleFor(a => a.Description)
                 .NotEmpty().WithMessage("{Description} is required")
                 .NotNull()
-                .MaximumLength(150).WithMessage("{Description} must not exceed 150 characters");
+                .MaximumLength(500).WithMessage("{Description} must not exceed 500 characters");
         }
     }
 }

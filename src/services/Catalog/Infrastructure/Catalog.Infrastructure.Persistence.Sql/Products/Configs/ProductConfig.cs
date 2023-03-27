@@ -15,6 +15,10 @@ namespace Catalog.Infrastructure.Persistence.Sql.Products.Configs
 
             builder.Property(p => p.Description).HasMaxLength(500).IsRequired();
 
+            builder.Property(p => p.Price).HasDefaultValueSql("100000").IsRequired();
+
+            builder.Property(p => p.Inventory).HasDefaultValueSql("10").IsRequired();
+
             base.Configure(builder);
         }
     }
