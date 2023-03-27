@@ -16,7 +16,7 @@ namespace Catalog.Infrastructure.Persistence.Sql.Contexts
         #endregion
         public CatalogBbContext(DbContextOptions options) : base(options)
         {
-            // Database.Migrate();
+             Database.Migrate();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

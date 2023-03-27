@@ -14,7 +14,7 @@ namespace Catalog.Infrastructure.Persistence.Sql
     {
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContextPool<CatalogBbContext>(c => c.UseSqlServer(configuration.GetConnectionString("CatalogDBConnection")));
+            services.AddDbContextPool<CatalogBbContext>(c => c.UseSqlServer(configuration.GetConnectionString("CatalogConnectionString")));
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
