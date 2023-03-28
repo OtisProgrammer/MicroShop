@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using MediatR;
 using Ordering.Application.Common;
 using Ordering.Application.Orders.Commands;
+using Ordering.Application.Orders.Queries;
+using Ordering.Application.Orders.QueryViews;
 
 namespace Ordering.Api.Controllers
 {
@@ -15,16 +17,16 @@ namespace Ordering.Api.Controllers
         {
         }
 
-        //#region GetAllProduct
-        //[HttpGet("GetAll")]
-        //[ProducesResponseType(typeof(QueryResult<IEnumerable<GetAllProductQueryView>>), (int)HttpStatusCode.OK)]
-        //public async Task<ActionResult<QueryResult<IEnumerable<GetAllProductQueryView>>>> GetAllProduct()
-        //{
-        //    var query = new GetAllProductQuery();
-        //    var result = await mediator.Send(query);
-        //    return Response(result);
-        //}
-        //#endregion
+        #region GetAllOrder
+        [HttpGet("GetAll")]
+        [ProducesResponseType(typeof(QueryResult<IEnumerable<GetAllOrderQueryView>>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<QueryResult<IEnumerable<GetAllOrderQueryView>>>> GetAllOrderQuery()
+        {
+            var query = new GetAllOrderQuery();
+            var result = await mediator.Send(query);
+            return Response(result);
+        }
+        #endregion
 
         #region CreateOrder
         [HttpPost("Create")]

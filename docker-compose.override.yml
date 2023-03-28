@@ -1,6 +1,15 @@
 version: '3.4'
 
 services:
+  orderdb:
+    container_name: orderdb
+    environment:
+      SA_PASSWORD: "SwN12345678"
+      ACCEPT_EULA: "Y"
+    restart: always
+    ports:
+      - "1434:1433"
+  
   catalogdb:
     container_name: catalogdb
     environment:
@@ -10,6 +19,13 @@ services:
     ports:
       - "1433:1433"
 
+  rabbitmq:
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
   catalog.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -18,3 +34,12 @@ services:
       - catalogdb
     ports:
       - "8000:80"
+  
+  ordering.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:OrderConnectionString=Server=orderdb;Database=Shop.Ordering;User Id=sa;Password=SwN12345678;"
+    depends_on:
+      - orderdb
+    ports:
+      - "8001:80"
