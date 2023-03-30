@@ -1,6 +1,7 @@
 using System.Reflection;
 using Autofac;
 using FluentValidation;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -35,6 +36,15 @@ namespace Ordering.Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ordering.Api", Version = "v1" });
             }); 
             services.AddValidatorsFromAssembly(typeof(CreateOrderCommandValidation).Assembly);
+
+            services.AddMassTransit(config =>
+            {
+                config.UsingRabbitMq((ctx, conf) =>
+                {
+                    conf.Host(Configuration.GetValue<string>("EventBusSettings:HostAddress"));
+                });
+            });
+            services.AddMassTransitHostedService();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

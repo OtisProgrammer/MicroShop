@@ -4,6 +4,8 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using EventBus.Messages.Events;
+using MassTransit;
 using MediatR;
 using Ordering.Application.Common;
 using Ordering.Application.Orders.Commands;
@@ -17,10 +19,12 @@ namespace Ordering.Application.Orders.CommandHandlers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public CreateOrderCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        private readonly IPublishEndpoint _publishEndpoint;
+        public CreateOrderCommandHandler(IUnitOfWork unitOfWork, IMapper mapper, IPublishEndpoint publishEndpoint)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _publishEndpoint = publishEndpoint;
         }
         public async Task<CommandResult> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {
@@ -42,6 +46,14 @@ namespace Ordering.Application.Orders.CommandHandlers
                 };
                 await _unitOfWork.OrderRepository.Create(order);
                 await _unitOfWork.Commit();
+                var eventMessage = new CreateOrderEvent()
+                {
+                    Count =5,
+                    ProductId = 1
+                };
+
+                await _publishEndpoint.Publish(eventMessage);
+
                 commandResult.Message = "عملیات با موفقیت انجام شد";
                 commandResult.MessageCode = (int)HttpStatusCode.OK;
             }

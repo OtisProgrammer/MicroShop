@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "serviceActions": {
+        "catalog.api": "StartDebugging",
+        "catalogdb": "StartWithoutDebugging",
+        "orderdb": "StartWithoutDebugging",
+        "ordering.api": "StartDebugging",
+        "rabbitmq": "StartWithoutDebugging"
+      },
+      "commandVersion": "1.0"
+    }
+  }
+}

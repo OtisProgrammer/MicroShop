@@ -1,5 +1,8 @@
 using Catalog.Application;
+using Catalog.Application.EventBusConsumer;
 using Catalog.Infrastructure.Persistence.Sql;
+using EventBus.Messages.Common;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +32,21 @@ namespace Catalog.Api
             }); 
             services.AddApplicationServices();
             services.AddInfrastructureServices(Configuration);
+            services.AddMassTransit(config =>
+            {
+                config.AddConsumer<CreateOrderConsumer>();
+
+                config.UsingRabbitMq((ctx, conf) =>
+                {
+                    conf.Host(Configuration.GetValue<string>("EventBusSettings:HostAddress"));
+                    conf.ReceiveEndpoint(EventBusConstants.OrderingCheckoutQueue, c =>
+                    {
+                        c.ConfigureConsumer<CreateOrderConsumer>(ctx);
+                    });
+                });
+            });
+            services.AddMassTransitHostedService();
+            services.AddScoped<CreateOrderConsumer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

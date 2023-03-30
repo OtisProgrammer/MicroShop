@@ -33,15 +33,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{FB658C9A-E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{A51514B8-09D4-425B-9082-56628A9418FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Api", "src\services\Ordering\Api\Ordering.Api\Ordering.Api.csproj", "{2861AE9F-2E0B-4D29-8B6B-9FCD4D451D0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Api", "src\services\Ordering\Api\Ordering.Api\Ordering.Api.csproj", "{2861AE9F-2E0B-4D29-8B6B-9FCD4D451D0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Domain", "src\services\Ordering\Core\Ordering.Domain\Ordering.Domain.csproj", "{37B3A888-0944-450E-A6DC-AD8AE2253A97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Domain", "src\services\Ordering\Core\Ordering.Domain\Ordering.Domain.csproj", "{37B3A888-0944-450E-A6DC-AD8AE2253A97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Application", "src\services\Ordering\Core\Ordering.Application\Ordering.Application.csproj", "{4EA1FA05-43F6-46CE-A0D4-ED7591FEC8D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Application", "src\services\Ordering\Core\Ordering.Application\Ordering.Application.csproj", "{4EA1FA05-43F6-46CE-A0D4-ED7591FEC8D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastructure.DependencyInjection", "src\services\Ordering\Infrastructure\Ordering.Infrastructure.DependencyInjection\Ordering.Infrastructure.DependencyInjection.csproj", "{C6C1D4EB-4B1D-4D8D-A403-07895CF405A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Infrastructure.DependencyInjection", "src\services\Ordering\Infrastructure\Ordering.Infrastructure.DependencyInjection\Ordering.Infrastructure.DependencyInjection.csproj", "{C6C1D4EB-4B1D-4D8D-A403-07895CF405A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastructure.Persistence.Sql", "src\services\Ordering\Infrastructure\Ordering.Infrastructure.Persistence.Sql\Ordering.Infrastructure.Persistence.Sql.csproj", "{67A3601B-BAC7-46E1-B158-9C6ED0AE588D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Infrastructure.Persistence.Sql", "src\services\Ordering\Infrastructure\Ordering.Infrastructure.Persistence.Sql\Ordering.Infrastructure.Persistence.Sql.csproj", "{67A3601B-BAC7-46E1-B158-9C6ED0AE588D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{BDF47071-EE6D-466D-993D-6D738CCCDB0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.Messages", "src\BuildingBlocks\EventBus.Messages\EventBus.Messages.csproj", "{8E80CB95-F933-4C33-8F50-809CA792DE78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +93,10 @@ Global
 		{67A3601B-BAC7-46E1-B158-9C6ED0AE588D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67A3601B-BAC7-46E1-B158-9C6ED0AE588D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67A3601B-BAC7-46E1-B158-9C6ED0AE588D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E80CB95-F933-4C33-8F50-809CA792DE78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E80CB95-F933-4C33-8F50-809CA792DE78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E80CB95-F933-4C33-8F50-809CA792DE78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E80CB95-F933-4C33-8F50-809CA792DE78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,6 +120,8 @@ Global
 		{4EA1FA05-43F6-46CE-A0D4-ED7591FEC8D9} = {FB658C9A-EB3E-4734-9BAC-E58A3706B801}
 		{C6C1D4EB-4B1D-4D8D-A403-07895CF405A9} = {A51514B8-09D4-425B-9082-56628A9418FA}
 		{67A3601B-BAC7-46E1-B158-9C6ED0AE588D} = {A51514B8-09D4-425B-9082-56628A9418FA}
+		{BDF47071-EE6D-466D-993D-6D738CCCDB0A} = {7FBB6193-A0ED-44C3-8D70-D05EA759B30A}
+		{8E80CB95-F933-4C33-8F50-809CA792DE78} = {BDF47071-EE6D-466D-993D-6D738CCCDB0A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {233F3F20-07EA-4F58-B598-AC1A2588E77A}

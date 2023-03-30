@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\BuildingBlocks\EventBus.Messages\EventBus.Messages.csproj" />
     <ProjectReference Include="..\..\Core\Catalog.Application\Catalog.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Catalog.Infrastructure.Persistence.Sql\Catalog.Infrastructure.Persistence.Sql.csproj" />
   </ItemGroup>

@@ -13,7 +13,7 @@ namespace Ordering.Application.Orders.Commands
 
     public class CreateOrderItemsDto
     {
-        public int Count { get; set; }
-        public int ProductId { get; set; }
+        public int Count { get; set; } = 5;
+        public int ProductId { get; set; } = 1;
     }
 }
